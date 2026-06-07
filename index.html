@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🦆 Quack Factory</title>
+<title>🛁 Rubber Duck Factory</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -140,11 +140,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 .prestige-btn{background:var(--yellow);color:var(--dark);border:none;border-radius:10px;padding:10px 28px;font-weight:800;font-size:15px;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:8px;transition:.18s;width:100%}
 .prestige-btn:hover:not(:disabled){background:var(--yellow-h)}
 .prestige-btn:disabled{background:rgba(255,255,255,.25);cursor:not-allowed;color:rgba(255,255,255,.6)}
-.feather-shop-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;padding:4px 0 6px;margin-top:4px}
-.feather-upgrade{background:#fff;border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:5px;display:flex;gap:8px;align-items:center;box-shadow:var(--shadow);border:2px solid transparent}
-.feather-upgrade.can-buy{border-color:rgba(155,93,229,.3)}
-.feather-btn{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:6px 10px;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;white-space:nowrap}
-.feather-btn:disabled{background:#ddd;color:#aaa;cursor:not-allowed}
+.squeaker-shop-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--purple);text-transform:uppercase;letter-spacing:.8px;padding:4px 0 6px;margin-top:4px}
+.squeaker-upgrade{background:#fff;border-radius:var(--radius-sm);padding:10px 12px;margin-bottom:5px;display:flex;gap:8px;align-items:center;box-shadow:var(--shadow);border:2px solid transparent}
+.squeaker-upgrade.can-buy{border-color:rgba(155,93,229,.3)}
+.squeaker-btn{background:var(--purple);color:#fff;border:none;border-radius:8px;padding:6px 10px;font-weight:800;font-size:12px;cursor:pointer;font-family:'Nunito',sans-serif;white-space:nowrap}
+.squeaker-btn:disabled{background:#ddd;color:#aaa;cursor:not-allowed}
 /* Achievements */
 .ach-card{background:#fff;border-radius:var(--radius-sm);padding:9px 12px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;border-left:3px solid #ddd;transition:.2s}
 .ach-card.earned{border-left-color:var(--green)}
@@ -206,7 +206,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 @keyframes rewardBounce{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(0)}}
 .reward-name{font-weight:800;font-size:16px;margin:6px 0}
 .reward-desc{font-size:13px;opacity:.7;margin-bottom:16px}
-/* Bread rain */
+/* Bubble rain */
 #bread-rain{position:fixed;inset:0;pointer-events:none;z-index:60;display:none}
 .bread-piece{position:absolute;font-size:28px;cursor:pointer;pointer-events:all;animation:bread-fall linear forwards;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2))}
 @keyframes bread-fall{from{transform:translateY(-50px) rotate(0)}to{transform:translateY(110vh) rotate(400deg)}}
@@ -263,7 +263,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   .daily-days{gap:5px 4px}
   .prestige-hero{padding:14px}
   .gf-count{font-size:30px}
-  .feather-upgrade{padding:8px;gap:6px}
+  .squeaker-upgrade{padding:8px;gap:6px}
   #mobile-nav{display:flex!important;grid-column:1;grid-row:3;padding:5px max(6px,env(safe-area-inset-left)) calc(5px + env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-right));overflow-x:auto}
   .nav-btn{min-width:54px;min-height:42px;font-size:8px;padding:4px 2px}
   .nav-btn span{font-size:17px}
@@ -304,11 +304,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
 <div id="app">
 <header id="topbar">
-  <div class="logo">🦆 Quack Factory <span>Build the pond. Feed the ducks. Break the economy.</span></div>
+  <div class="logo">🛁 Rubber Duck Factory <span>Squeeze. Mold. Bubble. Dominate.</span></div>
   <div class="top-stats">
     <div class="top-stat"><div class="val" id="top-quacks">0</div><div class="lbl">Quacks</div></div>
     <div class="top-stat"><div class="val" id="top-qps">0/s</div><div class="lbl">Per Sec</div></div>
-    <div class="top-stat"><div class="val" id="top-qpc">1</div><div class="lbl">Per Click</div></div>
+    <div class="top-stat"><div class="val" id="top-qpc">1</div><div class="lbl">Per Squeeze</div></div>
     <div class="top-stat"><div class="val" id="top-mult">1.00x</div><div class="lbl">Multiplier</div></div>
   </div>
   <div class="top-btns">
@@ -320,26 +320,26 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
 <aside id="left-col">
   <div id="mascot">
-    <span class="duck-emoji" id="mascot-duck">🦆</span>
-    <div class="speech" id="mascot-speech">Loading quack wisdom...</div>
+    <span class="duck-emoji" id="mascot-duck">🛁</span>
+    <div class="speech" id="mascot-speech">Loading rubber wisdom...</div>
   </div>
-  <div id="duck-fact">🦆 A duck's quack doesn't echo. No one knows why.</div>
+  <div id="duck-fact">🛁 Rubber ducks became popular bath toys in the 20th century.</div>
 
   <div class="section-title">📊 Production</div>
   <div class="stat-card">
     <div class="stat-row"><span class="lbl">Quacks</span><span class="val" id="stat-quacks">0</span></div>
     <div class="stat-row"><span class="lbl">Lifetime Quacks</span><span class="val" id="stat-lifetime">0</span></div>
     <div class="stat-row"><span class="lbl">Per Second</span><span class="val" id="stat-qps">0</span></div>
-    <div class="stat-row"><span class="lbl">Per Click</span><span class="val" id="stat-qpc">1</span></div>
+    <div class="stat-row"><span class="lbl">Per Squeeze</span><span class="val" id="stat-qpc">1</span></div>
     <div class="stat-row"><span class="lbl">Multiplier</span><span class="val" id="stat-mult">1.00x</span></div>
-    <div class="stat-row"><span class="lbl">Total Clicks</span><span class="val" id="stat-clicks">0</span></div>
+    <div class="stat-row"><span class="lbl">Total Squeezes</span><span class="val" id="stat-clicks">0</span></div>
   </div>
 
   <div class="section-title">🌟 Prestige</div>
   <div class="stat-card">
     <div class="stat-row"><span class="lbl">Prestige Level</span><span class="val" id="stat-prestige">0</span></div>
-    <div class="stat-row"><span class="lbl">Golden Feathers</span><span class="val" id="stat-feathers">🪶 0</span></div>
-    <div class="stat-row"><span class="lbl">Feather Bonus</span><span class="val" id="stat-feather-bonus">+0%</span></div>
+    <div class="stat-row"><span class="lbl">Golden Squeakers</span><span class="val" id="stat-feathers">✨ 0</span></div>
+    <div class="stat-row"><span class="lbl">Squeaker Bonus</span><span class="val" id="stat-feather-bonus">+0%</span></div>
   </div>
 
   <div class="section-title">⚡ Active Boosts</div>
@@ -349,7 +349,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
   <div class="section-title">🏆 Achievements</div>
   <div class="stat-card" id="ach-summary" style="font-size:12px">
-    <span style="opacity:.5;font-style:italic">Click the duck to begin!</span>
+    <span style="opacity:.5;font-style:italic">Squeeze the rubber duck to begin!</span>
   </div>
 </aside>
 
@@ -362,11 +362,11 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   <div id="crit-flash"></div>
 
   <div id="center-content">
-    <div id="factory-name-display">🏡 Backyard Pond</div>
-    <div id="duck-wrap" onclick="clickDuck(event)" role="button" tabindex="0" aria-label="Squeeze the duck">
+    <div id="factory-name-display">🛁 Starter Bathtub</div>
+    <div id="duck-wrap" onclick="clickDuck(event)" role="button" tabindex="0" aria-label="Squeeze the rubber duck">
       <div class="duck-ring" id="duck-ring"></div>
-      <span id="main-duck">🦆</span>
-      <div id="duck-label">Click for Quacks!</div>
+      <span id="main-duck">🛁</span>
+      <div id="duck-label">Squeeze for Quacks!</div>
     </div>
     <div id="combo-wrap">
       <div id="combo-bar-bg"><div id="combo-fill" style="width:0%"></div></div>
@@ -374,7 +374,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
     </div>
     <div id="factory-prog-wrap">
       <div class="prog-header">
-        <span id="factory-prog-label" style="font-size:12px;font-weight:700">Next: Tiny Duck Shed</span>
+        <span id="factory-prog-label" style="font-size:12px;font-weight:700">Next: Bubble Test Tub</span>
         <span id="factory-prog-pct" style="font-size:12px;font-family:'Fredoka One',cursive;color:var(--orange)">0%</span>
       </div>
       <div id="factory-prog-bar"><div id="factory-prog-fill" style="width:0%"></div></div>
@@ -388,7 +388,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
 <section id="right-col">
   <div id="shop-tabs">
-    <button class="shop-tab active" onclick="switchTab('upgrades')" id="tab-upgrades"><span class="tab-icon">⚡</span>Click</button>
+    <button class="shop-tab active" onclick="switchTab('upgrades')" id="tab-upgrades"><span class="tab-icon">⚡</span>Squeeze</button>
     <button class="shop-tab" onclick="switchTab('auto')" id="tab-auto"><span class="tab-icon">🤖</span>Auto</button>
     <button class="shop-tab" onclick="switchTab('factories')" id="tab-factories"><span class="tab-icon">🏭</span>Factory</button>
     <button class="shop-tab" onclick="switchTab('skins')" id="tab-skins"><span class="tab-icon">🎨</span>Skins</button>
@@ -408,7 +408,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 </section>
 
 <nav id="mobile-nav">
-  <button class="nav-btn active" onclick="mobileNav('center')"><span>🦆</span>Duck</button>
+  <button class="nav-btn active" onclick="mobileNav('center')"><span>🛁</span>Squeeze</button>
   <button class="nav-btn" onclick="mobileNav('shop')"><span>⚡</span>Shop</button>
   <button class="nav-btn" onclick="mobileNav('factory')"><span>🏭</span>Factory</button>
   <button class="nav-btn" onclick="mobileNav('skins')"><span>🎨</span>Skins</button>
@@ -417,17 +417,17 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 </nav>
 
 <footer id="footer">
-  <span>🦆 Quack Factory v2.0</span>
+  <span>🛁 Rubber Duck Factory v2.1</span>
   <span id="save-indicator">💾 Ready</span>
-  <span>No ducks were harmed. Probably.</span>
+  <span>No real ducks involved. Just squeaky rubber.</span>
 </footer>
 </div>
 
 <!-- POPUPS -->
 <div id="offline-popup">
   <div class="popup-card">
-    <h2>Welcome Back! 🦆</h2>
-    <p>Your ducks kept quacking while you were away...</p>
+    <h2>Welcome Back! 🛁</h2>
+    <p>Your rubber duck line kept squeaking while you were away...</p>
     <div class="popup-big-num" id="offline-amount">0</div>
     <p id="offline-sub">Quacks earned offline</p>
     <button class="popup-ok" onclick="closePopup('offline-popup')">Collect & Quack!</button>
@@ -436,13 +436,13 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
 <div id="tutorial">
   <div class="tut-card">
-    <span class="tut-icon" id="tut-icon">🦆</span>
+    <span class="tut-icon" id="tut-icon">🛁</span>
     <h2 id="tut-title">Welcome!</h2>
     <div class="tut-progress" id="tut-progress"></div>
     <p id="tut-text">Loading...</p>
     <div class="tut-btns">
       <button class="tut-skip" onclick="endTutorial()">Skip</button>
-      <button class="tut-next" onclick="nextTutorial()" id="tut-next-btn">Let's Go! 🦆</button>
+      <button class="tut-next" onclick="nextTutorial()" id="tut-next-btn">Let's Squeak! 🛁</button>
     </div>
   </div>
 </div>
@@ -453,18 +453,18 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
     <h2 style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--orange);margin-top:10px">You found...</h2>
     <p class="reward-name" id="crate-reward-name">Mystery Reward</p>
     <p class="reward-desc" id="crate-reward-desc">Something good!</p>
-    <button class="popup-ok" onclick="closePopup('crate-popup')">Quack Yeah! 🦆</button>
+    <button class="popup-ok" onclick="closePopup('crate-popup')">Squeaky! 🛁</button>
   </div>
 </div>
 
 <div id="strike-popup">
   <div class="strike-card">
     <div style="font-size:44px;margin-bottom:8px">🪧</div>
-    <h2>Duck Strike!</h2>
-    <p>The duck workers are demanding more bread!<br>Production is at <strong>50%</strong> until resolved.</p>
+    <h2>Rubber Shortage!</h2>
+    <p>The molding line needs more squeaky valves!<br>Production is at <strong>50%</strong> until resolved.</p>
     <p style="margin-bottom:14px">Cost to resolve: <span style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--orange)" id="strike-cost">0</span> Quacks</p>
     <div style="display:flex;gap:8px;justify-content:center">
-      <button class="popup-ok" onclick="resolveStrike()" style="background:var(--green);padding:10px 20px;font-size:14px">🍞 Pay Up!</button>
+      <button class="popup-ok" onclick="resolveStrike()" style="background:var(--green);padding:10px 20px;font-size:14px">🧼 Restock!</button>
       <button class="popup-ok" onclick="ignoreStrike()" style="background:#ccc;color:var(--dark);padding:10px 20px;font-size:14px">Wait it out</button>
     </div>
   </div>
@@ -473,7 +473,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 <div id="reset-confirm">
   <div class="confirm-card">
     <h3>⚠️ Reset Everything?</h3>
-    <p>This will permanently delete ALL your progress. Every quack. Every feather. Even the grumpy ones.</p>
+    <p>This will permanently delete ALL your progress. Every quack, squeaker, mold, and bubble.</p>
     <div class="confirm-btns">
       <button class="btn-danger" onclick="resetGame()">Destroy it all 💀</button>
       <button class="btn-cancel" onclick="closePopup('reset-confirm')">Never mind!</button>
@@ -486,175 +486,175 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 
 <script>
 const UPGRADES=[
-  {id:'beak1',    name:'Stronger Beak',      icon:'💪',desc:'+1 Quack per click',         cost:10,    mult:1.15,effect:{qpc:1}},
-  {id:'feather1', name:'Lucky Feather',       icon:'🍀',desc:'+5% critical click chance',  cost:50,    mult:1.15,effect:{crit:0.05}},
-  {id:'waddle1',  name:'Mega Waddle',         icon:'🚶',desc:'+10% click power',           cost:120,   mult:1.18,effect:{qpcMult:0.1}},
-  {id:'bread1',   name:'Golden Breadcrumbs',  icon:'🍞',desc:'+2 Quacks per click',        cost:300,   mult:1.15,effect:{qpc:2}},
-  {id:'gloves1',  name:'Quack Gloves',        icon:'🧤',desc:'+5 Quacks per click',        cost:800,   mult:1.15,effect:{qpc:5}},
-  {id:'bill1',    name:'Titanium Bill',       icon:'⚡',desc:'+15% click power',           cost:2500,  mult:1.18,effect:{qpcMult:0.15}},
-  {id:'stamp1',   name:'Quack Stampede',      icon:'🌊',desc:'+20 Quacks per click',       cost:8000,  mult:1.15,effect:{qpc:20}},
-  {id:'fury1',    name:'Duck Fury Mode',      icon:'😤',desc:'+100% click power',          cost:50000, mult:1.2, effect:{qpcMult:1.0}},
-  {id:'sonic1',   name:'Sonic Quack',         icon:'🔊',desc:'+50 Quacks per click',       cost:200000,mult:1.15,effect:{qpc:50}},
-  {id:'hyper1',   name:'Hyperbeak™',          icon:'🦴',desc:'+500% click power',          cost:2000000,mult:1.2,effect:{qpcMult:5.0}},
+  {id:'beak1',    name:'Softer Squeeze',       icon:'✋',desc:'+1 Quack per squeeze',       cost:10,    mult:1.15,effect:{qpc:1}},
+  {id:'feather1', name:'Lucky Squeaker Valve', icon:'🍀',desc:'+5% critical squeak chance', cost:50,    mult:1.15,effect:{crit:0.05}},
+  {id:'waddle1',  name:'Premium Latex Blend',  icon:'🟡',desc:'+10% squeeze power',         cost:120,   mult:1.18,effect:{qpcMult:0.1}},
+  {id:'bread1',   name:'Bubble Polish',        icon:'🫧',desc:'+2 Quacks per squeeze',      cost:300,   mult:1.15,effect:{qpc:2}},
+  {id:'gloves1',  name:'Squeaky Gloves',       icon:'🧤',desc:'+5 Quacks per squeeze',      cost:800,   mult:1.15,effect:{qpc:5}},
+  {id:'bill1',    name:'Reinforced Squeaker',  icon:'🔊',desc:'+15% squeeze power',         cost:2500,  mult:1.18,effect:{qpcMult:0.15}},
+  {id:'stamp1',   name:'Double Mold Press',    icon:'🏭',desc:'+20 Quacks per squeeze',     cost:8000,  mult:1.15,effect:{qpc:20}},
+  {id:'fury1',    name:'Mega Squeeze Mode',    icon:'💥',desc:'+100% squeeze power',        cost:50000, mult:1.2, effect:{qpcMult:1.0}},
+  {id:'sonic1',   name:'Sonic Squeak',         icon:'🔊',desc:'+50 Quacks per squeeze',     cost:200000,mult:1.15,effect:{qpc:50}},
+  {id:'hyper1',   name:'Hyper-Squeaker Core',  icon:'⚙️',desc:'+500% squeeze power',        cost:2000000,mult:1.2,effect:{qpcMult:5.0}},
 ];
 const AUTOMATION=[
-  {id:'baby',       name:'Baby Duck Worker',           icon:'🐥',desc:'1 Quack/sec',          cost:15,       mult:1.18,effect:{qps:1}},
-  {id:'intern',     name:'Duck Intern',                icon:'👔',desc:'5 Quacks/sec',         cost:100,      mult:1.18,effect:{qps:5}},
-  {id:'conveyor',   name:'Bread Conveyor Belt',        icon:'🏭',desc:'25 Quacks/sec',        cost:500,      mult:1.18,effect:{qps:25}},
+  {id:'baby',       name:'Mini Rubber Mold',           icon:'🛁',desc:'1 Quack/sec',          cost:15,       mult:1.18,effect:{qps:1}},
+  {id:'intern',     name:'Squeaker Fitter',            icon:'🔧',desc:'5 Quacks/sec',         cost:100,      mult:1.18,effect:{qps:5}},
+  {id:'conveyor',   name:'Bubble Conveyor Belt',       icon:'🏭',desc:'25 Quacks/sec',        cost:500,      mult:1.18,effect:{qps:25}},
   {id:'packing',    name:'Quack Packing Machine',      icon:'📦',desc:'100 Quacks/sec',       cost:2000,     mult:1.18,effect:{qps:100}},
-  {id:'pond',       name:'Pond-Powered Generator',     icon:'🌊',desc:'500 Quacks/sec',       cost:8000,     mult:1.18,effect:{qps:500}},
-  {id:'turbine',    name:'Mega Quack Turbine',         icon:'⚙️',desc:'2,500 Quacks/sec',    cost:35000,    mult:1.18,effect:{qps:2500}},
-  {id:'duckbot',    name:'Duckbot Assembly Line',      icon:'🤖',desc:'10,000 Quacks/sec',   cost:150000,   mult:1.18,effect:{qps:10000}},
-  {id:'portal',     name:'Interdimensional Pond Portal',icon:'🌀',desc:'100K Quacks/sec',    cost:1000000,  mult:1.18,effect:{qps:100000}},
+  {id:'pond',       name:'Bath-Water Generator',       icon:'🌊',desc:'500 Quacks/sec',       cost:8000,     mult:1.18,effect:{qps:500}},
+  {id:'turbine',    name:'Mega Squeak Turbine',        icon:'⚙️',desc:'2,500 Quacks/sec',    cost:35000,    mult:1.18,effect:{qps:2500}},
+  {id:'duckbot',    name:'Rubber Duck Assembly Line',  icon:'🤖',desc:'10,000 Quacks/sec',   cost:150000,   mult:1.18,effect:{qps:10000}},
+  {id:'portal',     name:'Interdimensional Bathtub',   icon:'🌀',desc:'100K Quacks/sec',     cost:1000000,  mult:1.18,effect:{qps:100000}},
   {id:'singularity',name:'Quack Singularity',          icon:'🌌',desc:'1M Quacks/sec',       cost:10000000, mult:1.18,effect:{qps:1000000}},
-  {id:'godquack',   name:'The One True Quack',         icon:'🦆',desc:'10M Quacks/sec',      cost:1000000000,mult:1.18,effect:{qps:10000000}},
+  {id:'godquack',   name:'The One True Squeak',        icon:'🛁',desc:'10M Quacks/sec',      cost:1000000000,mult:1.18,effect:{qps:10000000}},
 ];
 const FACTORIES=[
-  {id:'f0',name:'Backyard Pond',           icon:'🏡',unlock:0,          bonusMult:1,   bg:'linear-gradient(160deg,#AEEBFF 0%,#89D9FF 100%)',   decos:[]},
-  {id:'f1',name:'Tiny Duck Shed',          icon:'🏚️',unlock:1000,       bonusMult:1.05,bg:'linear-gradient(160deg,#C5F5C8 0%,#88E892 100%)',   decos:['🌿','🌾']},
-  {id:'f2',name:'Bread Factory',           icon:'🍞',unlock:25000,      bonusMult:1.10,bg:'linear-gradient(160deg,#FFE9B0 0%,#FFC866 100%)',   decos:['🍞','🥐']},
-  {id:'f3',name:'Mega Pond Plant',         icon:'🏭',unlock:250000,     bonusMult:1.15,bg:'linear-gradient(160deg,#C8DFFF 0%,#7FBEFF 100%)',   decos:['🏭','⚙️']},
+  {id:'f0',name:'Starter Bathtub',         icon:'🛁',unlock:0,          bonusMult:1,   bg:'linear-gradient(160deg,#AEEBFF 0%,#89D9FF 100%)',   decos:[]},
+  {id:'f1',name:'Bubble Test Tub',         icon:'🫧',unlock:1000,       bonusMult:1.05,bg:'linear-gradient(160deg,#C5F5C8 0%,#88E892 100%)',   decos:['🧼','🫧']},
+  {id:'f2',name:'Rubber Mold Room',        icon:'🟡',unlock:25000,      bonusMult:1.10,bg:'linear-gradient(160deg,#FFE9B0 0%,#FFC866 100%)',   decos:['🟡','🧽']},
+  {id:'f3',name:'Mega Bath Plant',         icon:'🏭',unlock:250000,     bonusMult:1.15,bg:'linear-gradient(160deg,#C8DFFF 0%,#7FBEFF 100%)',   decos:['🏭','⚙️']},
   {id:'f4',name:'Rubber Duck Research Lab',icon:'🔬',unlock:2000000,    bonusMult:1.20,bg:'linear-gradient(160deg,#E8D0FF 0%,#BA85FF 100%)',   decos:['🔬','💡']},
   {id:'f5',name:'Sky Quack Station',       icon:'🛸',unlock:25000000,   bonusMult:1.25,bg:'linear-gradient(160deg,#B0D4FF 0%,#5C6BDD 100%)',   decos:['🛸','⭐']},
-  {id:'f6',name:'Moon Pond Base',          icon:'🌙',unlock:500000000,  bonusMult:1.30,bg:'linear-gradient(160deg,#1A1030 0%,#2D1B5E 100%)',   decos:['🌙','🌟']},
-  {id:'f7',name:'The Infinite Duckverse',  icon:'🌌',unlock:10000000000,bonusMult:1.50,bg:'linear-gradient(160deg,#050510 0%,#130B2A 100%)',   decos:['🌌','✨']},
+  {id:'f6',name:'Moon Bathtub Base',       icon:'🌙',unlock:500000000,  bonusMult:1.30,bg:'linear-gradient(160deg,#1A1030 0%,#2D1B5E 100%)',   decos:['🌙','🌟']},
+  {id:'f7',name:'Infinite Rubber Dimension',icon:'🌌',unlock:10000000000,bonusMult:1.50,bg:'linear-gradient(160deg,#050510 0%,#130B2A 100%)',  decos:['🌌','✨']},
 ];
 const SKINS=[
-  {id:'classic',name:'Classic Duck',   icon:'🦆',desc:'Default duck.',              cost:0,      bonusType:'',          bonusVal:0,   bonus:''},
-  {id:'rubber', name:'Rubber Duck',    icon:'🛁',desc:'Squeaky clean.',             cost:500,    bonusType:'',          bonusVal:0,   bonus:''},
-  {id:'dj',     name:'DJ Duck',        icon:'🎧',desc:'Drop the quack.',            cost:2500,   bonusType:'qpcMult',   bonusVal:.05, bonus:'+5% click power'},
-  {id:'cyber',  name:'Cyber Duck',     icon:'🤖',desc:'Neon visor, robot wings.',   cost:8000,   bonusType:'qpsMult',   bonusVal:.05, bonus:'+5% Quacks/sec'},
-  {id:'wizard', name:'Wizard Duck',    icon:'🧙',desc:'Hat and magic wand.',        cost:20000,  bonusType:'goldenMult',bonusVal:.3,  bonus:'Golden ducks more often'},
-  {id:'pirate', name:'Pirate Duck',    icon:'🏴‍☠️',desc:'Eyepatch and swagger.',  cost:50000,  bonusType:'critMult',  bonusVal:.1,  bonus:'+10% crit bonus'},
-  {id:'space',  name:'Space Duck',     icon:'🚀',desc:'Helmet and stars.',          cost:150000, bonusType:'factoryMult',bonusVal:.1, bonus:'Factory progress faster'},
+  {id:'classic',name:'Classic Yellow Rubber Duck', icon:'🛁',desc:'Squeaky bath classic.',      cost:0,      bonusType:'',          bonusVal:0,   bonus:''},
+  {id:'rubber', name:'Glossy Rubber Duck',         icon:'🟡',desc:'Extra shiny bath finish.',   cost:500,    bonusType:'',          bonusVal:0,   bonus:''},
+  {id:'dj',     name:'DJ Rubber Duck',             icon:'🎧',desc:'Drop the squeak.',           cost:2500,   bonusType:'qpcMult',   bonusVal:.05, bonus:'+5% squeeze power'},
+  {id:'cyber',  name:'Cyber Rubber Duck',          icon:'🤖',desc:'Neon visor, rubber shell.',  cost:8000,   bonusType:'qpsMult',   bonusVal:.05, bonus:'+5% Quacks/sec'},
+  {id:'wizard', name:'Wizard Rubber Duck',         icon:'🧙',desc:'Tiny hat, magic bubbles.',   cost:20000,  bonusType:'goldenMult',bonusVal:.3,  bonus:'Golden rubber ducks more often'},
+  {id:'pirate', name:'Pirate Rubber Duck',         icon:'🏴‍☠️',desc:'Squeaky eyepatch.',      cost:50000,  bonusType:'critMult',  bonusVal:.1,  bonus:'+10% crit bonus'},
+  {id:'space',  name:'Space Rubber Duck',          icon:'🚀',desc:'Helmet and bath stars.',     cost:150000, bonusType:'factoryMult',bonusVal:.1, bonus:'Factory progress faster'},
   {id:'king',   name:'King Quack',     icon:'👑',desc:'Crown and cape.',            cost:500000, bonusType:'allMult',   bonusVal:.1,  bonus:'+10% all Quacks'},
-  {id:'angry',  name:'Tiny Angry Duck',icon:'😤',desc:'Perpetually grumpy.',        cost:10000,  bonusType:'',          bonusVal:0,   bonus:''},
-  {id:'disco',  name:'Disco Duck',     icon:'🪩',desc:'Sparkles and party lights.', cost:30000,  bonusType:'',          bonusVal:0,   bonus:''},
-  {id:'dino',   name:'Dino Duck',      icon:'🦕',desc:'Ancient and wise.',          cost:100000, bonusType:'qpcMult',   bonusVal:.15, bonus:'+15% click power'},
-  {id:'chef',   name:'Chef Duck',      icon:'👨‍🍳',desc:'Bread is my passion.',     cost:75000,  bonusType:'qpsMult',   bonusVal:.10, bonus:'+10% Quacks/sec'},
+  {id:'angry',  name:'Grumpy Rubber Duck', icon:'😤',desc:'Still rubber. Still squeaky.', cost:10000,  bonusType:'',          bonusVal:0,   bonus:''},
+  {id:'disco',  name:'Disco Rubber Duck',  icon:'🪩',desc:'Sparkles and bath lights.',    cost:30000,  bonusType:'',          bonusVal:0,   bonus:''},
+  {id:'dino',   name:'Dino Rubber Duck',   icon:'🦕',desc:'Prehistoric novelty mold.',    cost:100000, bonusType:'qpcMult',   bonusVal:.15, bonus:'+15% squeeze power'},
+  {id:'chef',   name:'Soap Chef Rubber Duck',icon:'🧼',desc:'Bubbles are my passion.',    cost:75000,  bonusType:'qpsMult',   bonusVal:.10, bonus:'+10% Quacks/sec'},
 ];
 const BOOSTS=[
-  {id:'breadstorm',name:'Bread Storm',     icon:'🌧️',desc:'2× Quacks/sec for 60s',          cost:1000,  duration:60, type:'qpsMult', val:2,cooldown:300},
-  {id:'megaclick', name:'Mega Quack Mode', icon:'💥',desc:'3× click power for 30s',          cost:2000,  duration:30, type:'qpcMult', val:3,cooldown:300},
-  {id:'goldenpond',name:'Golden Pond',     icon:'✨',desc:'Golden ducks 3× more, 2 min',     cost:3000,  duration:120,type:'goldenMult',val:3,cooldown:600},
+  {id:'breadstorm',name:'Bubble Storm',    icon:'🫧',desc:'2× Quacks/sec for 60s',          cost:1000,  duration:60, type:'qpsMult', val:2,cooldown:300},
+  {id:'megaclick', name:'Mega Squeeze Mode',icon:'💥',desc:'3× squeeze power for 30s',       cost:2000,  duration:30, type:'qpcMult', val:3,cooldown:300},
+  {id:'goldenpond',name:'Golden Bathtub',  icon:'✨',desc:'Golden rubber ducks 3× more, 2 min',cost:3000,duration:120,type:'goldenMult',val:3,cooldown:600},
   {id:'frenzy',    name:'Factory Frenzy',  icon:'⚡',desc:'5× automation for 20s',           cost:8000,  duration:20, type:'qpsMult', val:5,cooldown:600},
-  {id:'duckrush',  name:'Duck Rush',       icon:'🏃',desc:'Combo fills 2× faster for 60s',   cost:1500,  duration:60, type:'comboMult',val:2,cooldown:300},
+  {id:'duckrush',  name:'Squeak Rush',     icon:'🏃',desc:'Combo fills 2× faster for 60s',   cost:1500,  duration:60, type:'comboMult',val:2,cooldown:300},
   {id:'critfest',  name:'Crit Fiesta',     icon:'🎯',desc:'5× crit multiplier for 45s',      cost:5000,  duration:45, type:'critMult', val:5,cooldown:480},
 ];
 const PRESTIGE_UPGRADES=[
-  {id:'fastmig',  name:'Faster Migration',    icon:'🕊️',desc:'+10% Golden Feathers per run', cost:5,max:5, effect:'featherMult',val:.1},
-  {id:'ancientwis',name:'Ancient Pond Wisdom',icon:'📜',desc:'+20% click power permanently',  cost:3,max:10,effect:'qpcMult',   val:.2},
-  {id:'royal',    name:'Royal Duck Bloodline',icon:'👑',desc:'+20% automation permanently',   cost:3,max:10,effect:'qpsMult',   val:.2},
-  {id:'blessed',  name:'Blessed Breadcrumbs', icon:'🍞',desc:'Golden ducks give 50% more',   cost:4,max:5, effect:'goldenBonus',val:.5},
-  {id:'memory',   name:'Factory Memory',      icon:'🏭',desc:'Start with bonus Quacks',       cost:6,max:3, effect:'factoryStart',val:.25},
-  {id:'offlineup',name:'Restful Pond',        icon:'😴',desc:'+2hrs offline cap',             cost:4,max:4, effect:'offlineCap', val:2},
-  {id:'critpow',  name:'Elite Bill Training', icon:'⚔️',desc:'+50% critical click value',    cost:5,max:5, effect:'critPower',  val:.5},
+  {id:'fastmig',  name:'Faster Re-Molding',   icon:'🔁',desc:'+10% Golden Squeakers per run', cost:5,max:5, effect:'featherMult',val:.1},
+  {id:'ancientwis',name:'Ancient Bath Wisdom',icon:'📜',desc:'+20% squeeze power permanently',cost:3,max:10,effect:'qpcMult',   val:.2},
+  {id:'royal',    name:'Royal Rubber Formula',icon:'👑',desc:'+20% automation permanently',   cost:3,max:10,effect:'qpsMult',   val:.2},
+  {id:'blessed',  name:'Blessed Bubbles',     icon:'🫧',desc:'Golden rubber ducks give 50% more',cost:4,max:5,effect:'goldenBonus',val:.5},
+  {id:'memory',   name:'Mold Memory',         icon:'🏭',desc:'Start with bonus Quacks',       cost:6,max:3, effect:'factoryStart',val:.25},
+  {id:'offlineup',name:'Rubber Rest',         icon:'😴',desc:'+2hrs offline cap',             cost:4,max:4, effect:'offlineCap', val:2},
+  {id:'critpow',  name:'Elite Squeeze Training',icon:'⚔️',desc:'+50% critical squeeze value',cost:5,max:5, effect:'critPower',  val:.5},
 ];
 const DECORATIONS=[
-  {id:'breadpile', name:'Bread Pile',         icon:'🍞',cost:500,   bonusType:'allMult', bonusVal:.005,bonus:'+0.5% all Quacks'},
-  {id:'fountain',  name:'Tiny Pond Fountain', icon:'⛲',cost:2000,  bonusType:'qpsMult', bonusVal:.01, bonus:'+1% QPS'},
-  {id:'statue',    name:'Duck Statue',        icon:'🗿',cost:8000,  bonusType:'qpcMult', bonusVal:.01, bonus:'+1% click power'},
+  {id:'breadpile', name:'Bubble Bin',         icon:'🫧',cost:500,   bonusType:'allMult', bonusVal:.005,bonus:'+0.5% all Quacks'},
+  {id:'fountain',  name:'Tiny Bath Fountain', icon:'⛲',cost:2000,  bonusType:'qpsMult', bonusVal:.01, bonus:'+1% QPS'},
+  {id:'statue',    name:'Rubber Duck Statue', icon:'🗿',cost:8000,  bonusType:'qpcMult', bonusVal:.01, bonus:'+1% squeeze power'},
   {id:'neonsign',  name:'Neon Quack Sign',    icon:'📛',cost:20000, bonusType:'allMult', bonusVal:.02, bonus:'+2% all Quacks'},
   {id:'convlights',name:'Conveyor Lights',    icon:'💡',cost:50000, bonusType:'qpsMult', bonusVal:.02, bonus:'+2% QPS'},
   {id:'discoball', name:'Mini Disco Ball',    icon:'🪩',cost:100000,bonusType:'',        bonusVal:0,   bonus:'Pure vibes only'},
-  {id:'goldennest',name:'Golden Nest',        icon:'🪹',cost:250000,bonusType:'goldenMult',bonusVal:.25,bonus:'Golden ducks come faster'},
+  {id:'goldennest',name:'Golden Bathtub',     icon:'🛁',cost:250000,bonusType:'goldenMult',bonusVal:.25,bonus:'Golden rubber ducks come faster'},
   {id:'trophy',    name:'Quack Trophy Shelf', icon:'🏆',cost:500000,bonusType:'allMult', bonusVal:.05, bonus:'+5% all Quacks'},
 ];
 const ACHIEVEMENTS=[
-  {id:'first',   name:'First Quack!',       icon:'🦆',desc:'Earn your first Quack',          check:s=>s.lifetime>=1},
+  {id:'first',   name:'First Squeak!',      icon:'🛁',desc:'Earn your first Quack',          check:s=>s.lifetime>=1},
   {id:'q100',    name:'100 Quacks',          icon:'💰',desc:'100 lifetime Quacks',             check:s=>s.lifetime>=100},
   {id:'q1k',     name:'1,000 Quacks',        icon:'💵',desc:'1,000 lifetime Quacks',           check:s=>s.lifetime>=1000},
   {id:'q100k',   name:'100K Quacks',         icon:'💸',desc:'100,000 lifetime Quacks',         check:s=>s.lifetime>=100000},
-  {id:'q1m',     name:'Millionaire Duck',    icon:'🤑',desc:'1 Million lifetime Quacks',       check:s=>s.lifetime>=1000000},
-  {id:'q1b',     name:'Billionaire Beak',    icon:'💎',desc:'1 Billion lifetime Quacks',       check:s=>s.lifetime>=1000000000},
+  {id:'q1m',     name:'Millionaire Squeaker',icon:'🤑',desc:'1 Million lifetime Quacks',       check:s=>s.lifetime>=1000000},
+  {id:'q1b',     name:'Billionaire Bath',    icon:'💎',desc:'1 Billion lifetime Quacks',       check:s=>s.lifetime>=1000000000},
   {id:'q1t',     name:'Trillionaire Quack',  icon:'🌌',desc:'1 Trillion lifetime Quacks',      check:s=>s.lifetime>=1000000000000},
   {id:'c100',    name:'Click Addict',        icon:'👆',desc:'Click 100 times',                 check:s=>s.totalClicks>=100},
   {id:'c1k',     name:'Thousand Taps',       icon:'🖱️',desc:'Click 1,000 times',              check:s=>s.totalClicks>=1000},
   {id:'c10k',    name:'Click Champion',      icon:'🏆',desc:'Click 10,000 times',             check:s=>s.totalClicks>=10000},
   {id:'c100k',   name:'Tap Legend',          icon:'👑',desc:'Click 100,000 times',            check:s=>s.totalClicks>=100000},
-  {id:'auto1',   name:'First Worker',        icon:'🐥',desc:'Buy first Baby Duck Worker',     check:s=>(s.upgrades.baby||0)>=1},
-  {id:'auto10',  name:'Duck Department',     icon:'👥',desc:'Own 10 Baby Duck Workers',       check:s=>(s.upgrades.baby||0)>=10},
-  {id:'auto50',  name:'Duck Army',           icon:'🦆',desc:'Own 50 Baby Duck Workers',       check:s=>(s.upgrades.baby||0)>=50},
-  {id:'factory1',name:'Moving Up',           icon:'🏚️',desc:'Unlock Tiny Duck Shed',         check:s=>s.factoryIndex>=1},
-  {id:'factory3',name:'Bread Baron',         icon:'🍞',desc:'Unlock Bread Factory',           check:s=>s.factoryIndex>=2},
-  {id:'factory6',name:'Moonshot',            icon:'🌙',desc:'Unlock Moon Pond Base',          check:s=>s.factoryIndex>=6},
-  {id:'factory7',name:'Infinite Duck',       icon:'🌌',desc:'Unlock the Infinite Duckverse', check:s=>s.factoryIndex>=7},
-  {id:'golden1', name:'Golden Touch',        icon:'⭐',desc:'Find a Golden Duck',             check:s=>s.goldenFound>=1},
-  {id:'golden10',name:'Golden Hunter',       icon:'🌟',desc:'Find 10 Golden Ducks',           check:s=>s.goldenFound>=10},
+  {id:'auto1',   name:'First Mold',          icon:'🛁',desc:'Buy first Mini Rubber Mold',     check:s=>(s.upgrades.baby||0)>=1},
+  {id:'auto10',  name:'Mold Department',     icon:'👥',desc:'Own 10 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=10},
+  {id:'auto50',  name:'Rubber Duck Fleet',   icon:'🛁',desc:'Own 50 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=50},
+  {id:'factory1',name:'Moving Up',           icon:'🫧',desc:'Unlock Bubble Test Tub',         check:s=>s.factoryIndex>=1},
+  {id:'factory3',name:'Mold Master',         icon:'🟡',desc:'Unlock Rubber Mold Room',        check:s=>s.factoryIndex>=2},
+  {id:'factory6',name:'Moonshot',            icon:'🌙',desc:'Unlock Moon Bathtub Base',       check:s=>s.factoryIndex>=6},
+  {id:'factory7',name:'Infinite Rubber',     icon:'🌌',desc:'Unlock Infinite Rubber Dimension',check:s=>s.factoryIndex>=7},
+  {id:'golden1', name:'Golden Touch',        icon:'⭐',desc:'Find a Golden Rubber Duck',      check:s=>s.goldenFound>=1},
+  {id:'golden10',name:'Golden Hunter',       icon:'🌟',desc:'Find 10 Golden Rubber Ducks',    check:s=>s.goldenFound>=10},
   {id:'skin1',   name:'Fashionista',         icon:'🎨',desc:'Buy your first skin',            check:s=>s.skinsOwned.length>1},
   {id:'skinall', name:'Fashion Week',        icon:'💅',desc:'Own 5 or more skins',            check:s=>s.skinsOwned.length>=5},
-  {id:'prestige1',name:'Migration Season',   icon:'🌅',desc:'Complete first Migration',      check:s=>s.prestigeLevel>=1},
-  {id:'prestige5',name:'Serial Migrant',     icon:'✈️',desc:'Complete 5 Migrations',         check:s=>s.prestigeLevel>=5},
+  {id:'prestige1',name:'First Re-Mold',      icon:'🔁',desc:'Complete first Re-Mold',        check:s=>s.prestigeLevel>=1},
+  {id:'prestige5',name:'Serial Re-Molder',   icon:'✨',desc:'Complete 5 Re-Molds',           check:s=>s.prestigeLevel>=5},
   {id:'combo1',  name:'Quack Attack!',       icon:'🔥',desc:'Hit a 50-click combo',           check:s=>s.maxCombo>=50},
   {id:'qps100',  name:'Automation Expert',   icon:'⚙️',desc:'Reach 100 Quacks/sec',          check:s=>s.baseQPS>=100},
   {id:'qps1m',   name:'Automation Overlord', icon:'🌐',desc:'Reach 1M Quacks/sec',           check:s=>s.baseQPS>=1000000},
   {id:'boost1',  name:'Boost Addict',        icon:'🚀',desc:'Activate your first boost',     check:s=>s.boostsUsed>=1},
-  {id:'crate1',  name:'Mystery Solved',      icon:'📦',desc:'Open your first Duck Crate',    check:s=>s.cratesOpened>=1},
+  {id:'crate1',  name:'Mystery Mold',        icon:'📦',desc:'Open your first Rubber Crate',  check:s=>s.cratesOpened>=1},
   {id:'deco1',   name:'Interior Designer',   icon:'🛋️',desc:'Buy first decoration',          check:s=>s.decoOwned.length>=1},
   {id:'daily7',  name:'Loyal Quacker',       icon:'📅',desc:'Claim 7 daily rewards',         check:s=>s.dailyStreak>=7},
 ];
 const DAILY_REWARDS=[
   {day:1,icon:'🪙',name:'500 Quacks',           type:'quacks', val:500},
   {day:2,icon:'🪙',name:'2,000 Quacks',          type:'quacks', val:2000},
-  {day:3,icon:'⚡',name:'5-min Bread Storm',     type:'boost',  val:'breadstorm',duration:300},
-  {day:4,icon:'📦',name:'Duck Crate',             type:'crate',  val:1},
-  {day:5,icon:'🪶',name:'1 Golden Feather',       type:'feather',val:1},
+  {day:3,icon:'🫧',name:'5-min Bubble Storm',    type:'boost',  val:'breadstorm',duration:300},
+  {day:4,icon:'📦',name:'Rubber Crate',          type:'crate',  val:1},
+  {day:5,icon:'✨',name:'1 Golden Squeaker',      type:'feather',val:1},
   {day:6,icon:'🚀',name:'10-min Factory Frenzy',  type:'boost',  val:'frenzy',duration:600},
-  {day:7,icon:'📦',name:'Triple Duck Crate',      type:'crate',  val:3},
+  {day:7,icon:'📦',name:'Triple Rubber Crate',   type:'crate',  val:3},
 ];
 const CRATE_REWARDS=[
   {icon:'🪙',name:'Quack Bundle',   desc:'+500 Quacks',         type:'quacks', val:500,  weight:30},
   {icon:'🪙',name:'Big Quack Bundle',desc:'+5,000 Quacks',      type:'quacks', val:5000, weight:20},
-  {icon:'⚡',name:'Bread Storm',    desc:'2× QPS for 5 min',    type:'boost',  val:'breadstorm',duration:300,weight:15},
-  {icon:'💥',name:'Mega Click',     desc:'3× clicks for 2 min', type:'boost',  val:'megaclick',duration:120,weight:12},
-  {icon:'🪶',name:'Golden Feather', desc:'+1 Golden Feather',   type:'feather',val:1,    weight:5},
+  {icon:'🫧',name:'Bubble Storm',   desc:'2× QPS for 5 min',    type:'boost',  val:'breadstorm',duration:300,weight:15},
+  {icon:'💥',name:'Mega Squeeze',   desc:'3× squeezes for 2 min', type:'boost',val:'megaclick',duration:120,weight:12},
+  {icon:'✨',name:'Golden Squeaker',desc:'+1 Golden Squeaker',  type:'feather',val:1,    weight:5},
   {icon:'🎨',name:'Skin Discount',  desc:'Next skin is FREE!',  type:'skinDiscount',val:1,weight:5},
-  {icon:'🌟',name:'Golden Rush',    desc:'A Golden Duck appears!',type:'golden',val:1,   weight:13},
+  {icon:'🌟',name:'Golden Rush',    desc:'A Golden Rubber Duck appears!',type:'golden',val:1,weight:13},
 ];
 const MASCOT_LINES=[
-  "The ducks are unionising again.",
-  "Bread supply stable. Morale questionable.",
-  "A suspiciously rich duck has appeared.",
+  "The squeaker valves are unionising again.",
+  "Soap supply stable. Squeakiness: optimal.",
+  "A suspiciously shiny rubber duck has appeared.",
   "Your factory produces legally concerning levels of Quack.",
-  "The pond economy is booming.",
-  "No ducks were harmed. Probably.",
+  "The bath economy is booming.",
+  "No real ducks involved. Probably.",
   "Quack output has exceeded recommended limits.",
-  "Productivity up 400%. The ducks demand more snacks.",
-  "Someone left the pond gate open. Chaos ensues.",
-  "The ducks have filed for overtime. Again.",
-  "Bread inflation at record highs.",
-  "Duck morale: Adequate. Quack levels: Excellent.",
-  "The pond is full. We need more pond.",
-  "Local duck invents perpetual quack machine.",
+  "Productivity up 400%. The molds demand more polish.",
+  "Someone left the bath tap running. Chaos ensues.",
+  "The rubber ducks have filed for more bubbles. Again.",
+  "Bubble inflation at record highs.",
+  "Squeaker morale: Buoyant. Quack levels: Excellent.",
+  "The bathtub is full. We need more bathtub.",
+  "Local rubber duck invents perpetual quack machine.",
   "Analysts predict 40% more quacking this quarter.",
-  "Water still wet. Ducks still winning.",
-  "Breaking: local duck absolutely destroying the economy.",
-  "Management has concerns. The ducks do not.",
-  "Our legal team is a duck in a tie. It's fine.",
-  "A duck has discovered compound interest. We are all in danger.",
-  "Duck HR has filed a 47-page complaint. About breadcrumbs.",
+  "Water still wet. Rubber ducks still winning.",
+  "Breaking: local rubber duck absolutely destroying the economy.",
+  "Management has concerns. The squeakers do not.",
+  "Our legal team is a rubber duck in a tie. It's fine.",
+  "A rubber duck has discovered compound interest. We are all in danger.",
+  "Rubber Duck QA filed a 47-page complaint. About bubbles.",
 ];
 const DUCK_FACTS=[
-  "🦆 A duck's quack doesn't echo. Nobody knows why.",
-  "🦆 Ducks have three eyelids.",
-  "🦆 Ducks can fly up to 60 mph.",
-  "🦆 Wood ducks can see in full color.",
-  "🦆 Ducks can sleep with one eye open.",
-  "🦆 Baby ducks can walk within hours of hatching.",
-  "🦆 A group of ducks in water is called a 'paddling'.",
-  "🦆 Ducks' feet have no nerves — they don't feel the cold!",
-  "🦆 The oldest recorded duck lived to 20 years.",
-  "🦆 Male ducks are called drakes. Females are called... ducks.",
-  "🦆 Ducks are found on every continent except Antarctica.",
-  "🦆 Ducks waterproof their feathers with special oil.",
+  "🛁 Rubber ducks became popular bath toys in the 20th century.",
+  "🛁 Many rubber ducks squeak because air passes through a tiny valve.",
+  "🛁 In 1992, thousands of bath toys spilled into the ocean and helped scientists study currents.",
+  "🛁 Modern rubber ducks are usually plastic or vinyl rather than natural rubber.",
+  "🛁 Some novelty rubber ducks are made as pirates, astronauts, chefs, and superheroes.",
+  "🛁 A floating rubber duck works because its body traps air.",
+  "🛁 Giant inflatable rubber duck sculptures have appeared in cities around the world.",
+  "🛁 Bath toys should be dried after use to prevent grime inside the squeaker hole.",
+  "🛁 Some collectors own thousands of themed rubber ducks.",
+  "🛁 Rubber ducks are often used as debugging mascots by programmers.",
+  "🛁 Temperature-sensitive bath ducks can help check bath water warmth.",
+  "🛁 The classic yellow rubber duck is one of the most recognizable bath toys.",
 ];
 const MILESTONES=[
-  {at:100,text:'100 Quacks! The pond awakens!'},
+  {at:100,text:'100 Quacks! The bath is warming up!'},
   {at:1000,text:'1K Quacks! The factory grows!'},
   {at:10000,text:'10K Quacks! Economically threatening!'},
   {at:100000,text:'100K Quacks! Legally concerning!'},
   {at:1000000,text:'1 MILLION! You can prestige now!'},
-  {at:1000000000,text:'1 BILLION! The duck economy is broken!'},
+  {at:1000000000,text:'1 BILLION! The rubber duck economy is broken!'},
   {at:1000000000000,text:'1 TRILLION! You have achieved peak quack!'},
 ];
 
@@ -824,7 +824,7 @@ function spawnFloat(x,y,txt,cls=''){
   document.body.appendChild(el);setTimeout(()=>el.remove(),1050);
 }
 function spawnParticle(x,y){
-  const parts=['🪶','✨','💫','⭐','🌟'];
+  const parts=['🫧','✨','💫','⭐','🌟'];
   const el=document.createElement('div');el.className='particle';
   el.textContent=parts[Math.floor(Math.random()*parts.length)];
   const tx=(Math.random()-.5)*110,ty=-(50+Math.random()*80);
@@ -942,7 +942,7 @@ function updateDecos(){
 }
 
 function renderSkinsTab(container){
-  container.appendChild(mkEl('div','section-header','🎨 Duck Skins'));
+  container.appendChild(mkEl('div','section-header','🎨 Rubber Duck Skins'));
   const grid=mkEl('div','skin-grid');
   for(const s of SKINS){
     const owned=state.skinsOwned.includes(s.id),sel=state.selectedSkin===s.id;
@@ -1017,7 +1017,7 @@ function renderDailyTab(container){
 
   const cc=mkEl('div','crate-section');
   const crateCost=Math.floor(5000*(1+Math.log10(Math.max(1,state.lifetime/1000))));
-  cc.innerHTML=`<h3>📦 Duck Crates</h3>
+  cc.innerHTML=`<h3>📦 Rubber Crates</h3>
     <p style="font-size:12px;opacity:.65;margin:4px 0 6px">Skins, boosts, Quacks, or rare surprises!</p>
     <p style="font-size:12px;margin-bottom:2px">Crates opened: <strong>${state.cratesOpened}</strong></p>
     <button class="crate-btn" ${state.quacks>=crateCost?'':'disabled'} onclick="openCrate()">🪙 ${fmtNum(crateCost)} — Open Crate</button>`;
@@ -1041,7 +1041,7 @@ function applyReward(r,mult=1){
     if(b&&bs){bs.active=true;bs.timer=(r.duration||b.duration)*mult;bs.cd=0;toast(`${r.icon} ${b.name} activated!`);}
   }else if(r.type==='feather'){
     state.goldenFeathers+=Math.round(r.val*mult);
-    toast(`🪶 +${Math.round(r.val*mult)} Golden Feather(s)!`);
+    toast(`✨ +${Math.round(r.val*mult)} Golden Squeaker(s)!`);
   }else if(r.type==='crate'){
     for(let i=0;i<r.val;i++)openCrateReward();
   }else if(r.type==='skinDiscount'){
@@ -1068,28 +1068,28 @@ function renderPrestigeTab(container){
   const canPrestige=state.lifetime>=1000000;
   const gain=calcFeatherGain();
   const hero=mkEl('div','prestige-hero');
-  hero.innerHTML=`<h2>✨ Migration</h2>
-    <span class="gf-count">${state.goldenFeathers} 🪶</span>
-    <p>Golden Feathers — each gives +2% to all Quacks permanently</p>
-    <div class="gain-preview">${canPrestige?`Migrate now → <strong>+${gain} 🪶 Golden Feathers</strong>`:'Reach 1,000,000 lifetime Quacks to unlock Migration'}</div>
-    <button class="prestige-btn" ${canPrestige?'':'disabled'} onclick="doPrestige()">🕊️ Migrate Now!</button>`;
+  hero.innerHTML=`<h2>✨ Re-Molding</h2>
+    <span class="gf-count">${state.goldenFeathers} ✨</span>
+    <p>Golden Squeakers — each gives +2% to all Quacks permanently</p>
+    <div class="gain-preview">${canPrestige?`Re-mold now → <strong>+${gain} ✨ Golden Squeakers</strong>`:'Reach 1,000,000 lifetime Quacks to unlock Re-Molding'}</div>
+    <button class="prestige-btn" ${canPrestige?'':'disabled'} onclick="doPrestige()">🔁 Re-Mold Now!</button>`;
   container.appendChild(hero);
 
-  container.appendChild(mkEl('div','feather-shop-title','🪶 Feather Upgrades'));
+  container.appendChild(mkEl('div','squeaker-shop-title','✨ Squeaker Upgrades'));
   for(const pu of PRESTIGE_UPGRADES){
     const owned=state.prestigeUpgrades[pu.id]||0;
     const maxed=owned>=pu.max;const canBuy=state.goldenFeathers>=pu.cost&&!maxed;
-    const div=mkEl('div','feather-upgrade'+(canBuy?' can-buy':''));
+    const div=mkEl('div','squeaker-upgrade'+(canBuy?' can-buy':''));
     div.innerHTML=`<span style="font-size:24px">${pu.icon}</span>
       <div style="flex:1">
         <div style="font-weight:800;font-size:13px">${pu.name}${owned>0?`<span class="owned-badge">${owned}/${pu.max}</span>`:''}</div>
         <div style="font-size:11px;opacity:.6;margin-top:2px">${pu.desc}</div>
       </div>
-      <button class="feather-btn" ${canBuy?'':'disabled'} onclick="buyPrestigeUpgrade('${pu.id}')">${maxed?'Max':'🪶 '+pu.cost}</button>`;
+      <button class="squeaker-btn" ${canBuy?'':'disabled'} onclick="buyPrestigeUpgrade('${pu.id}')">${maxed?'Max':'✨ '+pu.cost}</button>`;
     container.appendChild(div);
   }
 
-  const atitle=mkEl('div','feather-shop-title');atitle.style.marginTop='10px';atitle.textContent='🏆 Achievements';
+  const atitle=mkEl('div','squeaker-shop-title');atitle.style.marginTop='10px';atitle.textContent='🏆 Achievements';
   container.appendChild(atitle);
   const earned=ACHIEVEMENTS.filter(a=>state.achievements.includes(a.id)).length;
   const prog=mkEl('div','',`<div style="font-weight:800;font-size:13px;margin-bottom:6px">Progress: ${earned}/${ACHIEVEMENTS.length}</div>
@@ -1124,8 +1124,8 @@ function doPrestige(){
   if(mem>0){const bonus=100000*mem;state.quacks=bonus;state.lifetime=bonus;}
   boostState=initBoostState();
   updateDuckSkin();updateFactoryBG();updateDecos();
-  showMilestoneBanner(`🕊️ Migration! +${gain} Golden Feathers!`);
-  toast(`🕊️ Migration done! Gained +${gain} 🪶!`);playSound('prestige');
+  showMilestoneBanner(`🔁 Re-Mold! +${gain} Golden Squeakers!`);
+  toast(`🔁 Re-Mold complete! Gained +${gain} ✨!`);playSound('prestige');
   renderShop();updateUI();
 }
 
@@ -1143,7 +1143,7 @@ function updateUI(){
   document.getElementById('stat-mult').textContent=mult.toFixed(2)+'x';
   document.getElementById('stat-clicks').textContent=fmtNum(state.totalClicks);
   document.getElementById('stat-prestige').textContent=state.prestigeLevel;
-  document.getElementById('stat-feathers').textContent='🪶 '+state.goldenFeathers;
+  document.getElementById('stat-feathers').textContent='✨ '+state.goldenFeathers;
   document.getElementById('stat-feather-bonus').textContent='+'+Math.round(state.goldenFeathers*2)+'%';
 
   // Factory progress
@@ -1192,7 +1192,7 @@ function updateUI(){
   const earnedA=ACHIEVEMENTS.filter(a=>state.achievements.includes(a.id));
   achEl.innerHTML=earnedA.length
     ?`<div style="font-weight:800;font-size:12px;margin-bottom:4px">Earned: ${earnedA.length}/${ACHIEVEMENTS.length}</div>`+earnedA.slice(-3).reverse().map(a=>`<div style="font-size:11px;padding:2px 0">${a.icon} ${a.name}</div>`).join('')
-    :'<span style="opacity:.5;font-style:italic;font-size:12px">Click the duck to begin!</span>';
+    :'<span style="opacity:.5;font-style:italic;font-size:12px">Squeeze the rubber duck to begin!</span>';
 }
 function updateFactoryBG(){
   const f=FACTORIES[state.factoryIndex];
@@ -1281,7 +1281,7 @@ document.getElementById('golden-duck-event').addEventListener('click',function()
     ()=>{const b=Math.round((calcQPS()*30+calcQPC()*60)*gb);state.quacks+=b;state.lifetime+=b;spawnFloat(cx,cy,'🌟 +'+fmtNum(b),'golden');toast(`🌟 Golden Bonus! +${fmtNum(b)} Quacks!`);},
     ()=>{const bs=boostState['breadstorm'];bs.active=true;bs.timer=45;toast('✨ 2× production for 45s!');},
     ()=>{const b=Math.round(calcQPC()*350*gb);state.quacks+=b;state.lifetime+=b;spawnFloat(cx,cy,'💰 +'+fmtNum(b),'golden');toast(`💰 Jackpot! +${fmtNum(b)} Quacks!`);},
-    ()=>{state.goldenFeathers+=1;spawnFloat(cx,cy,'🪶 +1 Feather!','golden');toast('🪶 Lucky! +1 Golden Feather!');},
+    ()=>{state.goldenFeathers+=1;spawnFloat(cx,cy,'✨ +1 Squeaker!','golden');toast('✨ Lucky! +1 Golden Squeaker!');},
     ()=>{state.skinDiscount=true;toast('🎨 BONUS! Next skin is FREE!');},
   ];
   rewards[Math.floor(Math.random()*rewards.length)]();
@@ -1297,9 +1297,9 @@ function triggerRandomEvent(){
 }
 function triggerBreadRain(){
   if(breadRainActive)return;breadRainActive=true;
-  toast('🍞 Bread Rain! Click the bread for bonus Quacks!');
+  toast('🫧 Bubble Rain! Tap the bubbles for bonus Quacks!');
   const c=document.getElementById('bread-rain');c.style.display='block';
-  let n=0;const items=['🍞','🥐','🥖','🧁','🍰'];
+  let n=0;const items=['🫧','🧼','🛁','🧽','🚿'];
   const iv=setInterval(()=>{
     if(n>=18){clearInterval(iv);return;}
     const el=mkEl('div','bread-piece');
@@ -1327,10 +1327,10 @@ function triggerDuckStrike(){
 function resolveStrike(){
   if(state.quacks<state.strikeCost){shakeEl('top-quacks');return;}
   state.quacks-=state.strikeCost;endStrike();
-  toast('🍞 Strike resolved! Production restored!');
+  toast('🧼 Rubber restocked! Production restored!');
   closePopup('strike-popup');
 }
-function ignoreStrike(){closePopup('strike-popup');toast('🪧 Strike ongoing... -50% production for a while');}
+function ignoreStrike(){closePopup('strike-popup');toast('🪧 Shortage ongoing... -50% production for a while');}
 function endStrike(){state.strikeActive=false;state.strikeMult=1;state.strikeTimer=0;closePopup('strike-popup');}
 
 // ── ACHIEVEMENTS & MILESTONES ──────────────────────────────────────
@@ -1392,14 +1392,14 @@ function rotateFact(){
 
 // ── TUTORIAL ───────────────────────────────────────────────────────
 const TUT=[
-  {title:'Welcome to Quack Factory!',icon:'🦆',text:'Build the pond. Feed the ducks. Break the economy.'},
-  {title:'Click the Duck!',icon:'👆',text:'Tap the big duck to earn Quacks. Click fast to build a Combo multiplier for bonus Quacks!'},
-  {title:'Buy Upgrades',icon:'⚡',text:'Visit the Click tab to spend Quacks on upgrades that power up every click.'},
-  {title:'Automate!',icon:'🤖',text:'The Auto tab has Duck Workers who produce Quacks passively — even when you\'re away!'},
-  {title:'Factories & Decorations',icon:'🏭',text:'Unlock new factories with lifetime Quacks. Decorate them with the Decorations section for passive bonuses!'},
+  {title:'Welcome to Rubber Duck Factory!',icon:'🛁',text:'Squeeze rubber ducks, make Quacks, upgrade molds, and flood the bath economy.'},
+  {title:'Squeeze the Rubber Duck!',icon:'👆',text:'Tap the big rubber duck to earn Quacks. Tap fast to build a Combo multiplier for bonus Quacks!'},
+  {title:'Buy Upgrades',icon:'⚡',text:'Visit the Squeeze tab to spend Quacks on upgrades that power up every squeeze.'},
+  {title:'Automate!',icon:'🤖',text:'The Auto tab has molds, fitters, and assembly lines that produce Quacks passively — even when you\'re away!'},
+  {title:'Factories & Decorations',icon:'🏭',text:'Unlock bigger rubber-duck production rooms with lifetime Quacks. Decorate them for passive bonuses!'},
   {title:'Daily Rewards',icon:'📅',text:'Check the Daily tab every day. Rewards get better the longer your streak!'},
-  {title:'Golden Ducks & Events',icon:'⭐',text:'Watch for Golden Ducks floating around the screen — click them fast for big rewards!'},
-  {title:'Migration (Prestige)',icon:'✨',text:'At 1 Million Quacks, Migrate to earn Golden Feathers — permanent bonuses that carry into all future runs!'},
+  {title:'Golden Rubber Ducks & Events',icon:'⭐',text:'Watch for Golden Rubber Ducks floating around the screen — tap them fast for big rewards!'},
+  {title:'Re-Molding (Prestige)',icon:'✨',text:'At 1 Million Quacks, Re-Mold to earn Golden Squeakers — permanent bonuses that carry into all future runs!'},
 ];
 let tutIdx=0;
 function showTutorial(){
@@ -1411,7 +1411,7 @@ function renderTutStep(i){
   document.getElementById('tut-icon').textContent=s.icon;
   document.getElementById('tut-title').textContent=s.title;
   document.getElementById('tut-text').textContent=s.text;
-  document.getElementById('tut-next-btn').textContent=i<TUT.length-1?'Next →':'Play! 🦆';
+  document.getElementById('tut-next-btn').textContent=i<TUT.length-1?'Next →':'Play! 🛁';
   document.getElementById('tut-progress').innerHTML=TUT.map((_,j)=>`<div class="tut-dot${j===i?' active':''}"></div>`).join('');
 }
 function nextTutorial(){tutIdx++;if(tutIdx>=TUT.length)endTutorial();else renderTutStep(tutIdx);}
