@@ -49,7 +49,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 #center-content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;width:100%;max-width:560px;min-height:0}
 /* Duck btn */
 #duck-wrap{position:relative;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;padding:8px;touch-action:manipulation;display:grid;place-items:center;min-width:150px;min-height:150px}
-#main-duck{font-size:120px;display:block;transition:transform .08s cubic-bezier(.3,1.8,.5,1);filter:drop-shadow(0 10px 24px rgba(58,46,31,.22));line-height:1}
+#main-duck{width:168px;max-width:48vw;aspect-ratio:1.18;display:block;transition:transform .08s cubic-bezier(.3,1.8,.5,1);filter:drop-shadow(0 10px 24px rgba(58,46,31,.22));line-height:1}
+#main-duck svg{display:block;width:100%;height:100%;overflow:visible}
 #duck-wrap.clicking #main-duck{transform:scale(0.85) translateY(6px)!important}
 #duck-wrap:not(.clicking) #main-duck{animation:duck-idle 2.2s ease-in-out infinite}
 @keyframes duck-idle{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-10px) rotate(1.5deg)}}
@@ -237,7 +238,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   #center-content{gap:8px;max-width:100%;height:100%;justify-content:center}
   #factory-name-display{font-size:clamp(15px,4.5vw,18px);max-width:94vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #duck-wrap{min-width:132px;min-height:132px;padding:2px}
-  #main-duck{font-size:clamp(88px,34vw,126px)!important}
+  #main-duck{width:clamp(128px,46vw,178px)!important}
   #duck-label{font-size:13px}
   #combo-wrap,#factory-prog-wrap{width:min(92vw,360px)}
   #combo-bar-bg{height:10px}
@@ -568,10 +569,10 @@ const ACHIEVEMENTS=[
   {id:'q1m',     name:'Millionaire Squeaker',icon:'🤑',desc:'1 Million lifetime Quacks',       check:s=>s.lifetime>=1000000},
   {id:'q1b',     name:'Billionaire Bath',    icon:'💎',desc:'1 Billion lifetime Quacks',       check:s=>s.lifetime>=1000000000},
   {id:'q1t',     name:'Trillionaire Quack',  icon:'🌌',desc:'1 Trillion lifetime Quacks',      check:s=>s.lifetime>=1000000000000},
-  {id:'c100',    name:'Click Addict',        icon:'👆',desc:'Click 100 times',                 check:s=>s.totalClicks>=100},
-  {id:'c1k',     name:'Thousand Taps',       icon:'🖱️',desc:'Click 1,000 times',              check:s=>s.totalClicks>=1000},
-  {id:'c10k',    name:'Click Champion',      icon:'🏆',desc:'Click 10,000 times',             check:s=>s.totalClicks>=10000},
-  {id:'c100k',   name:'Tap Legend',          icon:'👑',desc:'Click 100,000 times',            check:s=>s.totalClicks>=100000},
+  {id:'c100',    name:'Squeeze Addict',      icon:'👆',desc:'Squeeze 100 times',               check:s=>s.totalClicks>=100},
+  {id:'c1k',     name:'Thousand Squeaks',    icon:'🖱️',desc:'Squeeze 1,000 times',            check:s=>s.totalClicks>=1000},
+  {id:'c10k',    name:'Squeeze Champion',    icon:'🏆',desc:'Squeeze 10,000 times',           check:s=>s.totalClicks>=10000},
+  {id:'c100k',   name:'Squeak Legend',       icon:'👑',desc:'Squeeze 100,000 times',          check:s=>s.totalClicks>=100000},
   {id:'auto1',   name:'First Mold',          icon:'🛁',desc:'Buy first Mini Rubber Mold',     check:s=>(s.upgrades.baby||0)>=1},
   {id:'auto10',  name:'Mold Department',     icon:'👥',desc:'Own 10 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=10},
   {id:'auto50',  name:'Rubber Duck Fleet',   icon:'🛁',desc:'Own 50 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=50},
@@ -968,7 +969,57 @@ function buySkin(id){
   toast(`${s.icon} ${s.name} skin unlocked!`);checkAchievements();renderShop();updateUI();
 }
 function selectSkin(id){state.selectedSkin=id;updateDuckSkin();renderShop();}
-function updateDuckSkin(){const s=SKINS.find(x=>x.id===state.selectedSkin);document.getElementById('main-duck').textContent=s?s.icon:'🦆';}
+function skinColor(id){
+  return {
+    classic:'#FFD84D',rubber:'#FFE55C',dj:'#FFD84D',cyber:'#66D9FF',
+    wizard:'#C485FF',pirate:'#FFD84D',space:'#D8E9FF',king:'#FFD700',
+    angry:'#FF9A3D',disco:'#F7D7FF',dino:'#77D879',chef:'#FFF3B0'
+  }[id]||'#FFD84D';
+}
+function makeRubberDuckSVG(skinId){
+  const color=skinColor(skinId);
+  const extras={
+    dj:`<rect x="45" y="17" width="35" height="12" rx="6" fill="#25283D"/><circle cx="43" cy="34" r="7" fill="#25283D"/><circle cx="82" cy="34" r="7" fill="#25283D"/>`,
+    cyber:`<rect x="62" y="30" width="29" height="7" rx="3" fill="#101820"/><rect x="64" y="32" width="25" height="2" fill="#00F5FF"/>`,
+    wizard:`<path d="M55 18 L72 0 L88 27 Z" fill="#6B35B5"/><circle cx="72" cy="8" r="3" fill="#FFD84D"/>`,
+    pirate:`<path d="M73 33 L91 28" stroke="#111" stroke-width="3"/><circle cx="82" cy="31" r="5" fill="#111"/>`,
+    space:`<circle cx="74" cy="36" r="28" fill="rgba(210,240,255,.45)" stroke="rgba(255,255,255,.9)" stroke-width="3"/>`,
+    king:`<path d="M51 21 L59 8 L68 21 L77 8 L86 21 Z" fill="#FFB000" stroke="#A85E00" stroke-width="2"/>`,
+    angry:`<path d="M70 27 L82 23" stroke="#4B1800" stroke-width="3"/><path d="M87 23 L97 28" stroke="#4B1800" stroke-width="3"/>`,
+    disco:`<circle cx="58" cy="18" r="13" fill="#D7F6FF" stroke="#9B5DE5" stroke-width="2"/><path d="M48 18 H71 M58 7 V31" stroke="#9B5DE5" opacity=".65"/>`,
+    dino:`<path d="M42 41 L35 30 L52 35 Z" fill="#3BAA55"/><path d="M57 23 L62 12 L68 24 Z" fill="#3BAA55"/>`,
+    chef:`<circle cx="61" cy="14" r="8" fill="#fff"/><circle cx="72" cy="11" r="9" fill="#fff"/><circle cx="83" cy="15" r="8" fill="#fff"/><rect x="58" y="16" width="29" height="12" rx="3" fill="#fff"/>`
+  }[skinId]||'';
+  return `<svg viewBox="0 0 140 120" role="img" aria-label="Rubber duck">
+    <defs>
+      <radialGradient id="duckBodyGrad" cx="38%" cy="28%" r="70%">
+        <stop offset="0%" stop-color="#fff7a6"/>
+        <stop offset="45%" stop-color="${color}"/>
+        <stop offset="100%" stop-color="#E6A900"/>
+      </radialGradient>
+      <linearGradient id="waterLineGrad" x1="0" x2="1">
+        <stop offset="0%" stop-color="#62D8FF"/>
+        <stop offset="100%" stop-color="#2DAFE5"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="70" cy="101" rx="58" ry="11" fill="rgba(45,175,229,.28)"/>
+    <path d="M23 76 C28 57 47 49 70 54 C87 58 104 58 119 47 C122 66 112 87 88 93 C62 100 31 96 23 76 Z" fill="url(#duckBodyGrad)" stroke="#C88A00" stroke-width="3"/>
+    <ellipse cx="53" cy="75" rx="20" ry="11" fill="rgba(255,255,255,.24)"/>
+    <path d="M79 56 C77 43 80 30 94 25 C109 20 122 30 123 45 C124 58 113 66 100 66 C90 66 82 63 79 56 Z" fill="url(#duckBodyGrad)" stroke="#C88A00" stroke-width="3"/>
+    <path d="M118 43 C129 42 136 47 137 53 C130 59 121 58 114 53 Z" fill="#FF8A1D" stroke="#B95E00" stroke-width="2"/>
+    <circle cx="105" cy="39" r="4.4" fill="#25190B"/>
+    <circle cx="106.5" cy="37.4" r="1.4" fill="#fff"/>
+    <path d="M37 69 C47 60 62 60 72 70 C61 77 48 79 37 69 Z" fill="rgba(214,147,0,.36)"/>
+    <path d="M22 83 C45 91 81 94 120 80" fill="none" stroke="url(#waterLineGrad)" stroke-width="6" stroke-linecap="round" opacity=".82"/>
+    ${extras}
+  </svg>`;
+}
+function updateDuckSkin(){
+  const s=SKINS.find(x=>x.id===state.selectedSkin)||SKINS[0];
+  const el=document.getElementById('main-duck');
+  el.innerHTML=makeRubberDuckSVG(s.id);
+  el.setAttribute('aria-label',s.name);
+}
 
 function renderBoostsTab(container){
   container.appendChild(mkEl('div','section-header','🚀 Temporary Boosts'));
