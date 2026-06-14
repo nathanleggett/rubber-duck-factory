@@ -526,14 +526,12 @@ const AUTOMATION=[
   {id:'godquack',   name:'The One True Squeak',        icon:'🛁',desc:'10M Quacks/sec',      cost:1000000000,mult:1.18,effect:{qps:10000000}},
 ];
 const FACTORIES=[
-  {id:'f0',name:'Starter Bathtub',          icon:'🛁',unlock:0,           bonusMult:1,   bg:'linear-gradient(160deg,#AEEBFF 0%,#89D9FF 100%)',image:'assets/backgrounds/bg-01-bathtub.jpg',            theme:'#8BD9F8',decos:[]},
-  {id:'f1',name:'Bubble Test Tub',          icon:'🫧',unlock:1000,        bonusMult:1.05,bg:'linear-gradient(160deg,#BDEEFF 0%,#72C8F2 100%)',image:'assets/backgrounds/bg-01-bathtub.jpg',            theme:'#7DCEF3',decos:['🧼','🫧']},
-  {id:'f2',name:'Rubber Mold Room',         icon:'🟡',unlock:25000,       bonusMult:1.10,bg:'linear-gradient(160deg,#7DC7E8 0%,#7558B5 100%)',image:'assets/backgrounds/bg-02-mold-room.jpg',          theme:'#4A94C7',decos:['🟡','🧽']},
-  {id:'f3',name:'Mega Bath Plant',          icon:'🏭',unlock:250000,      bonusMult:1.15,bg:'linear-gradient(160deg,#7DC7E8 0%,#7558B5 100%)',image:'assets/backgrounds/bg-02-mold-room.jpg',          theme:'#516FB4',decos:['🏭','⚙️']},
-  {id:'f4',name:'Rubber Duck Research Lab', icon:'🔬',unlock:2000000,     bonusMult:1.20,bg:'linear-gradient(160deg,#9FD4F2 0%,#344D75 100%)',image:'assets/backgrounds/bg-03-research-lab.jpg',       theme:'#244D75',decos:['🔬','💡']},
-  {id:'f5',name:'Sky Rubber Duck Station',  icon:'🛸',unlock:25000000,    bonusMult:1.25,bg:'linear-gradient(160deg,#82C9FF 0%,#2E6BBA 100%)',image:'assets/backgrounds/bg-04-sky-station.jpg',        theme:'#2771C7',decos:['🛸','⭐']},
-  {id:'f6',name:'Moon Bathtub Base',        icon:'🌙',unlock:500000000,   bonusMult:1.30,bg:'linear-gradient(160deg,#1A233A 0%,#090D18 100%)',image:'assets/backgrounds/bg-05-moon-base.jpg',          theme:'#111A2E',decos:['🌙','🌟']},
-  {id:'f7',name:'Infinite Rubber Dimension',icon:'🌌',unlock:10000000000, bonusMult:1.50,bg:'linear-gradient(160deg,#2A0D4A 0%,#07030F 100%)',image:'assets/backgrounds/bg-06-infinite-dimension.jpg',theme:'#160724',decos:['🌌','✨']},
+  {id:'f0',name:'Starter Bathtub',          icon:'🛁',unlock:0,        bonusMult:1,   bg:'linear-gradient(160deg,#AEEBFF 0%,#89D9FF 100%)',image:'assets/backgrounds/bg-01-bathtub.jpg',            theme:'#8BD9F8',decos:[]},
+  {id:'f1',name:'Rubber Mold Room',         icon:'🟡',unlock:1000,     bonusMult:1.10,bg:'linear-gradient(160deg,#7DC7E8 0%,#7558B5 100%)',image:'assets/backgrounds/bg-02-mold-room.jpg',          theme:'#4A94C7',decos:['🟡','🧽']},
+  {id:'f2',name:'Rubber Duck Research Lab', icon:'🔬',unlock:25000,    bonusMult:1.20,bg:'linear-gradient(160deg,#9FD4F2 0%,#344D75 100%)',image:'assets/backgrounds/bg-03-research-lab.jpg',       theme:'#244D75',decos:['🔬','💡']},
+  {id:'f3',name:'Sky Rubber Duck Station',  icon:'🛸',unlock:250000,   bonusMult:1.25,bg:'linear-gradient(160deg,#82C9FF 0%,#2E6BBA 100%)',image:'assets/backgrounds/bg-04-sky-station.jpg',        theme:'#2771C7',decos:['🛸','⭐']},
+  {id:'f4',name:'Moon Bathtub Base',        icon:'🌙',unlock:2000000,  bonusMult:1.30,bg:'linear-gradient(160deg,#1A233A 0%,#090D18 100%)',image:'assets/backgrounds/bg-05-moon-base.jpg',          theme:'#111A2E',decos:['🌙','🌟']},
+  {id:'f5',name:'Infinite Rubber Dimension',icon:'🌌',unlock:25000000, bonusMult:1.50,bg:'linear-gradient(160deg,#2A0D4A 0%,#07030F 100%)',image:'assets/backgrounds/bg-06-infinite-dimension.jpg',theme:'#160724',decos:['🌌','✨']},
 ];
 const SKINS=[
   {id:'classic',name:'Classic Yellow Rubber Duck', icon:'🛁',image:'assets/ducks/duck-originalcut-01.png?v=originalcut1',previewImage:'assets/ducks/duck-01.jpg?v=sourcepreview1',playImage:'assets/ducks/duck-preview-01.png?v=playframe1',desc:'Squeaky bath classic.',      cost:0,      bonusType:'',          bonusVal:0,   bonus:''},
@@ -591,10 +589,10 @@ const ACHIEVEMENTS=[
   {id:'auto1',   name:'First Mold',          icon:'🛁',desc:'Buy first Mini Rubber Mold',     check:s=>(s.upgrades.baby||0)>=1},
   {id:'auto10',  name:'Mold Department',     icon:'👥',desc:'Own 10 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=10},
   {id:'auto50',  name:'Rubber Duck Fleet',   icon:'🛁',desc:'Own 50 Mini Rubber Molds',       check:s=>(s.upgrades.baby||0)>=50},
-  {id:'factory1',name:'Moving Up',           icon:'🫧',desc:'Unlock Bubble Test Tub',         check:s=>s.factoryIndex>=1},
-  {id:'factory3',name:'Mold Master',         icon:'🟡',desc:'Unlock Rubber Mold Room',        check:s=>s.factoryIndex>=2},
-  {id:'factory6',name:'Moonshot',            icon:'🌙',desc:'Unlock Moon Bathtub Base',       check:s=>s.factoryIndex>=6},
-  {id:'factory7',name:'Infinite Rubber',     icon:'🌌',desc:'Unlock Infinite Rubber Dimension',check:s=>s.factoryIndex>=7},
+  {id:'factory1',name:'Moving Up',           icon:'🟡',desc:'Unlock Rubber Mold Room',        check:s=>getHighestUnlockedFactoryIndex(s)>=1},
+  {id:'factory3',name:'Research Ready',      icon:'🔬',desc:'Unlock Rubber Duck Research Lab',check:s=>getHighestUnlockedFactoryIndex(s)>=2},
+  {id:'factory6',name:'Moonshot',            icon:'🌙',desc:'Unlock Moon Bathtub Base',       check:s=>getHighestUnlockedFactoryIndex(s)>=4},
+  {id:'factory7',name:'Infinite Rubber',     icon:'🌌',desc:'Unlock Infinite Rubber Dimension',check:s=>getHighestUnlockedFactoryIndex(s)>=5},
   {id:'golden1', name:'Golden Touch',        icon:'⭐',desc:'Find a Golden Rubber Duck',      check:s=>s.goldenFound>=1},
   {id:'golden10',name:'Golden Hunter',       icon:'🌟',desc:'Find 10 Golden Rubber Ducks',    check:s=>s.goldenFound>=10},
   {id:'skin1',   name:'Fashionista',         icon:'🎨',desc:'Buy your first skin',            check:s=>s.skinsOwned.length>1},
@@ -705,6 +703,7 @@ function normalizeState(saved){
   next.lifetime=Math.max(0,Number(next.lifetime)||0);
   next.totalClicks=Math.max(0,Number(next.totalClicks)||0);
   next.baseQPS=Math.max(0,Number(next.baseQPS)||0);
+  next.factoryIndex=Math.min(next.factoryIndex,getHighestUnlockedFactoryIndex(next));
   return next;
 }
 let state=defaultState();
@@ -726,6 +725,14 @@ function getCost(item,n=1){
   const own=getOwned(item.id);let c=0;
   for(let i=0;i<n;i++) c+=Math.floor(item.cost*Math.pow(item.mult,own+i));
   return c;
+}
+function getHighestUnlockedFactoryIndex(s=state){
+  let highest=0;
+  const lifetime=Number(s?.lifetime)||0;
+  for(let i=0;i<FACTORIES.length;i++){
+    if(lifetime>=FACTORIES[i].unlock)highest=i;
+  }
+  return highest;
 }
 function getMaxBuy(item){
   if(state.quacks<getCost(item,1))return 0;
@@ -935,7 +942,9 @@ function renderFactoriesTab(container){
   container.appendChild(grid);
 }
 function setFactory(i){
-  state.factoryIndex=i;updateFactoryBG();renderShop();updateUI();
+  if(i<0||i>=FACTORIES.length)return;
+  if(i>getHighestUnlockedFactoryIndex(state)){shakeEl('top-quacks');return;}
+  state.factoryIndex=i;updateFactoryBG();renderShop();updateUI();saveGame();
   toast(`${FACTORIES[i].icon} ${FACTORIES[i].name} selected!`);
 }
 function buyDeco(id){
@@ -1222,7 +1231,8 @@ function updateUI(){
   // Factory progress
   const f=FACTORIES[state.factoryIndex];
   document.getElementById('factory-name-display').textContent=f.icon+' '+f.name;
-  const ni=state.factoryIndex+1;
+  const highestUnlocked=getHighestUnlockedFactoryIndex(state);
+  const ni=highestUnlocked+1;
   if(ni<FACTORIES.length){
     const nf=FACTORIES[ni];
     const pct=Math.min(1,state.lifetime/nf.unlock);
@@ -1231,7 +1241,6 @@ function updateUI(){
     document.getElementById('factory-prog-pct').textContent=Math.floor(pct*100)+'%';
     document.getElementById('factory-next').textContent=fmtNum(state.lifetime)+' / '+fmtNum(nf.unlock);
     if(state.lifetime>=nf.unlock){
-      state.factoryIndex=ni;updateFactoryBG();
       toast(`🏭 New Factory: ${nf.icon} ${nf.name}!`);
       playSound('factory');checkAchievements();
     }
@@ -1581,8 +1590,9 @@ window.addEventListener('resize',checkMobile);
 
   updateDuckSkin();updateFactoryBG();renderShop();updateUI();rotateMascot();rotateFact();
   const startTab=new URLSearchParams(location.search).get('tab');
-  if(['upgrades','auto','factory','skins','boosts','daily','prestige'].includes(startTab)){
-    switchTab(startTab);
+  const resolvedStartTab=startTab==='factory'?'factories':startTab;
+  if(['upgrades','auto','factories','skins','boosts','daily','prestige'].includes(resolvedStartTab)){
+    switchTab(resolvedStartTab);
     if(window.innerWidth<=768&&startTab!=='upgrades'){
       document.getElementById('center-col').style.display='none';
       document.getElementById('right-col').style.display='flex';
