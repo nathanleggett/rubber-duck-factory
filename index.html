@@ -99,14 +99,16 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 .item-card{background:#fff;border-radius:var(--radius-sm);padding:10px 12px;box-shadow:var(--shadow);display:flex;gap:10px;align-items:center;transition:.18s;border:2px solid transparent}
 .item-card.can-afford{border-color:rgba(77,163,255,.35)}
 .item-card.can-afford:hover{border-color:var(--blue);transform:translateX(2px)}
-.item-card.locked-item{opacity:.4;filter:grayscale(.4)}
+.item-card.locked-item{opacity:.82;filter:saturate(.82)}
 .item-card .icon{font-size:28px;flex-shrink:0;width:38px;text-align:center}
 .item-card .info{flex:1;min-width:0}
 .item-card .name{font-weight:800;font-size:13px}
 .owned-badge{display:inline-block;background:var(--blue);color:#fff;border-radius:4px;padding:1px 5px;font-size:10px;font-weight:700;margin-left:4px;vertical-align:middle}
 .item-card .desc{font-size:11px;opacity:.6;line-height:1.3;margin-top:2px}
 .price-tag{font-family:'Fredoka One',cursive;font-size:12px;color:var(--orange);display:block;margin-top:3px}
-.factory-thumb{width:54px;height:40px;border-radius:8px;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(58,46,31,.12),0 2px 8px rgba(0,0,0,.12);flex-shrink:0}
+.factory-card{align-items:center}
+.factory-card.locked-item{background:rgba(255,255,255,.82)}
+.factory-thumb{width:64px;height:48px;border-radius:8px;background-size:cover;background-position:center;box-shadow:inset 0 0 0 1px rgba(58,46,31,.12),0 2px 8px rgba(0,0,0,.12);flex-shrink:0}
 .buy-btn{background:var(--yellow);border:none;border-radius:8px;padding:7px 11px;cursor:pointer;font-weight:800;font-size:12px;font-family:'Nunito',sans-serif;transition:.15s;white-space:nowrap;flex-shrink:0;color:var(--dark)}
 .buy-btn:hover:not(:disabled){background:var(--yellow-h);transform:scale(1.06)}
 .buy-btn:disabled{background:#e0d8c8;cursor:not-allowed;color:#aaa}
@@ -120,9 +122,9 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
 .skin-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .skin-card{background:#fff;border-radius:var(--radius-sm);padding:10px 8px;box-shadow:var(--shadow);text-align:center;border:3px solid transparent;cursor:pointer;transition:.2s;position:relative}
 .skin-card.selected{border-color:var(--yellow);box-shadow:0 0 0 2px var(--yellow-h)}
-.skin-card.skin-locked{opacity:.55}
+.skin-card.skin-locked{opacity:.78}
 .skin-duck{font-size:36px;display:block;margin-bottom:4px;transition:transform .2s}
-.skin-duck-img{display:block;width:100%;max-width:78px;aspect-ratio:1/1;object-fit:contain;margin:0 auto 4px;transition:transform .2s}
+.skin-duck-img{display:block;width:100%;max-width:108px;height:90px;object-fit:contain;object-position:center;margin:0 auto 6px;padding:4px;transition:transform .2s}
 .skin-card:hover .skin-duck{transform:scale(1.1) rotate(-5deg)}
 .skin-card:hover .skin-duck-img{transform:scale(1.08) rotate(-4deg)}
 .skin-name{font-weight:800;font-size:12px}
@@ -260,6 +262,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   .buy-toggle button{min-height:34px;font-size:11px}
   #shop-body{padding:8px;gap:6px}
   .item-card{display:grid;grid-template-columns:34px minmax(0,1fr) minmax(62px,auto);gap:8px;padding:8px;align-items:center}
+  .factory-card{grid-template-columns:72px minmax(0,1fr) minmax(62px,auto)}
+  .factory-thumb{width:66px;height:50px}
   .item-card .icon{width:34px;font-size:24px}
   .item-card .name{font-size:12px;line-height:1.2}
   .item-card .desc{font-size:10px}
@@ -267,6 +271,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   .buy-btn{min-height:36px;padding:7px 9px;font-size:11px;white-space:normal;line-height:1.05}
   .skin-grid,.deco-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
   .skin-card,.deco-card{padding:8px 6px}
+  .skin-duck-img{max-width:104px;height:88px;padding:6px}
   .daily-day{width:34px;height:34px}
   .daily-days{gap:5px 4px}
   .prestige-hero{padding:14px}
@@ -289,6 +294,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--dark);min-
   .top-stat .val{font-size:13px}
   .top-stat .lbl{font-size:7.5px}
   .item-card{grid-template-columns:30px minmax(0,1fr) 56px}
+  .factory-card{grid-template-columns:72px minmax(0,1fr) 56px}
   .item-card .icon{width:30px;font-size:22px}
   .nav-btn{min-width:50px}
 }
@@ -528,18 +534,18 @@ const FACTORIES=[
   {id:'f7',name:'Infinite Rubber Dimension',icon:'🌌',unlock:10000000000, bonusMult:1.50,bg:'linear-gradient(160deg,#2A0D4A 0%,#07030F 100%)',image:'assets/backgrounds/bg-06-infinite-dimension.jpg',theme:'#160724',decos:['🌌','✨']},
 ];
 const SKINS=[
-  {id:'classic',name:'Classic Yellow Rubber Duck', icon:'🛁',image:'assets/ducks/duck-padded-01.png',desc:'Squeaky bath classic.',      cost:0,      bonusType:'',          bonusVal:0,   bonus:''},
-  {id:'glossy', name:'Glossy Rubber Duck',         icon:'✨',image:'assets/ducks/duck-padded-02.png',desc:'Extra shiny bath finish.',   cost:500,    bonusType:'qpcMult',   bonusVal:.04, bonus:'+4% squeeze power'},
-  {id:'dj',     name:'DJ Rubber Duck',             icon:'🎧',image:'assets/ducks/duck-padded-03.png',desc:'Decks, headphones, squeaks.',cost:2500,   bonusType:'qpcMult',   bonusVal:.08, bonus:'+8% squeeze power'},
-  {id:'cyber',  name:'Cyber Rubber Duck',          icon:'🤖',image:'assets/ducks/duck-padded-04.png',desc:'Armored neon shell.',        cost:8000,   bonusType:'qpsMult',   bonusVal:.08, bonus:'+8% Quacks/sec'},
-  {id:'wizard', name:'Wizard Rubber Duck',         icon:'🧙',image:'assets/ducks/duck-padded-05.png',desc:'Tiny hat, magic bubbles.',   cost:20000,  bonusType:'goldenMult',bonusVal:.3,  bonus:'Golden rubber ducks more often'},
-  {id:'pirate', name:'Pirate Rubber Duck',         icon:'🏴‍☠️',image:'assets/ducks/duck-padded-06.png',desc:'Squeaky eyepatch.',    cost:50000,  bonusType:'critMult',  bonusVal:.1,  bonus:'+10% crit bonus'},
-  {id:'space',  name:'Space Rubber Duck',          icon:'🚀',image:'assets/ducks/duck-padded-07.png',desc:'Helmet, thrusters, bath stars.',cost:150000,bonusType:'qpsMult',bonusVal:.14, bonus:'+14% Quacks/sec'},
-  {id:'king',   name:'King Quack',                 icon:'👑',image:'assets/ducks/duck-padded-08.png',desc:'Crown and cape.',            cost:500000, bonusType:'allMult',   bonusVal:.1,  bonus:'+10% all Quacks'},
-  {id:'angry',  name:'Grumpy Rubber Duck',         icon:'😤',image:'assets/ducks/duck-padded-09.png',desc:'Still rubber. Still squeaky.',cost:10000, bonusType:'qpcMult',   bonusVal:.06, bonus:'+6% squeeze power'},
-  {id:'disco',  name:'Disco Rubber Duck',          icon:'🪩',image:'assets/ducks/duck-padded-10.png',desc:'Sparkles and bath lights.',  cost:30000,  bonusType:'allMult',   bonusVal:.06, bonus:'+6% all Quacks'},
-  {id:'dino',   name:'Dino Suit Rubber Duck',      icon:'🦕',image:'assets/ducks/duck-padded-11.png',desc:'A rubber duck in a tiny dino suit.',cost:100000,bonusType:'qpcMult',bonusVal:.15,bonus:'+15% squeeze power'},
-  {id:'soapchef',name:'Soap Chef Rubber Duck',     icon:'🧼',image:'assets/ducks/duck-padded-12.png',desc:'Chef hat, soap bar, maximum bubbles.',cost:75000,bonusType:'qpsMult',bonusVal:.10,bonus:'+10% Quacks/sec'},
+  {id:'classic',name:'Classic Yellow Rubber Duck', icon:'🛁',image:'assets/ducks/duck-padded-01.png?v=tailfix2',desc:'Squeaky bath classic.',      cost:0,      bonusType:'',          bonusVal:0,   bonus:''},
+  {id:'glossy', name:'Glossy Rubber Duck',         icon:'✨',image:'assets/ducks/duck-padded-02.png?v=tailfix2',desc:'Extra shiny bath finish.',   cost:500,    bonusType:'qpcMult',   bonusVal:.04, bonus:'+4% squeeze power'},
+  {id:'dj',     name:'DJ Rubber Duck',             icon:'🎧',image:'assets/ducks/duck-padded-03.png?v=tailfix2',desc:'Decks, headphones, squeaks.',cost:2500,   bonusType:'qpcMult',   bonusVal:.08, bonus:'+8% squeeze power'},
+  {id:'cyber',  name:'Cyber Rubber Duck',          icon:'🤖',image:'assets/ducks/duck-padded-04.png?v=tailfix2',desc:'Armored neon shell.',        cost:8000,   bonusType:'qpsMult',   bonusVal:.08, bonus:'+8% Quacks/sec'},
+  {id:'wizard', name:'Wizard Rubber Duck',         icon:'🧙',image:'assets/ducks/duck-padded-05.png?v=tailfix2',desc:'Tiny hat, magic bubbles.',   cost:20000,  bonusType:'goldenMult',bonusVal:.3,  bonus:'Golden rubber ducks more often'},
+  {id:'pirate', name:'Pirate Rubber Duck',         icon:'🏴‍☠️',image:'assets/ducks/duck-padded-06.png?v=tailfix2',desc:'Squeaky eyepatch.',    cost:50000,  bonusType:'critMult',  bonusVal:.1,  bonus:'+10% crit bonus'},
+  {id:'space',  name:'Space Rubber Duck',          icon:'🚀',image:'assets/ducks/duck-padded-07.png?v=tailfix2',desc:'Helmet, thrusters, bath stars.',cost:150000,bonusType:'qpsMult',bonusVal:.14, bonus:'+14% Quacks/sec'},
+  {id:'king',   name:'King Quack',                 icon:'👑',image:'assets/ducks/duck-padded-08.png?v=tailfix2',desc:'Crown and cape.',            cost:500000, bonusType:'allMult',   bonusVal:.1,  bonus:'+10% all Quacks'},
+  {id:'angry',  name:'Grumpy Rubber Duck',         icon:'😤',image:'assets/ducks/duck-padded-09.png?v=tailfix2',desc:'Still rubber. Still squeaky.',cost:10000, bonusType:'qpcMult',   bonusVal:.06, bonus:'+6% squeeze power'},
+  {id:'disco',  name:'Disco Rubber Duck',          icon:'🪩',image:'assets/ducks/duck-padded-10.png?v=tailfix2',desc:'Sparkles and bath lights.',  cost:30000,  bonusType:'allMult',   bonusVal:.06, bonus:'+6% all Quacks'},
+  {id:'dino',   name:'Dino Suit Rubber Duck',      icon:'🦕',image:'assets/ducks/duck-padded-11.png?v=tailfix2',desc:'A rubber duck in a tiny dino suit.',cost:100000,bonusType:'qpcMult',bonusVal:.15,bonus:'+15% squeeze power'},
+  {id:'soapchef',name:'Soap Chef Rubber Duck',     icon:'🧼',image:'assets/ducks/duck-padded-12.png?v=tailfix2',desc:'Chef hat, soap bar, maximum bubbles.',cost:75000,bonusType:'qpsMult',bonusVal:.10,bonus:'+10% Quacks/sec'},
 ];
 const BOOSTS=[
   {id:'breadstorm',name:'Bubble Storm',    icon:'🫧',desc:'2× Quacks/sec for 60s',          cost:1000,  duration:60, type:'qpsMult', val:2,cooldown:300},
@@ -901,7 +907,7 @@ function renderFactoriesTab(container){
   container.appendChild(mkEl('div','section-header','🏭 Factories'));
   for(let i=0;i<FACTORIES.length;i++){
     const f=FACTORIES[i],unlocked=state.lifetime>=f.unlock||i===0,isCurr=i===state.factoryIndex;
-    const card=mkEl('div','item-card'+(isCurr?' can-afford':'')+((!unlocked)?' locked-item':''));
+    const card=mkEl('div','item-card factory-card'+(isCurr?' can-afford':'')+((!unlocked)?' locked-item':''));
     card.innerHTML=`<div class="factory-thumb" style="background-image:url('${f.image}')"></div>
       <div class="info">
         <div class="name">${f.name}${isCurr?'<span class="active-tag">ACTIVE</span>':''}</div>
@@ -1587,5 +1593,6 @@ window.addEventListener('resize',checkMobile);
 </script>
 </body>
 </html>
+
 
 
